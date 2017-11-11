@@ -14,22 +14,121 @@
 	</head>
 	<body>
 
-		<script src="../build/three.js"></script>
+		<script src="three.js"></script>
+    <script src="OrbitControls.js"></script> <!-- Controle de la souris -->
 
-		<!-- Partie Murs -->
-		
-		
-		<!-- Fin partie Murs -->
-		
-		
-		
-		
-		
-		<!-- Partie Tours -->
-		
-		
-		<!-- Fin partie Tours -->
-		
-		
-  </body>
-  </html>
+		<script>
+			var camera, controls, scene, renderer;
+			var mesh;
+			init();
+			animate();
+
+
+// On met les formes
+
+			function init() {
+
+				camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 10000 );
+				controls = new THREE.OrbitControls( camera );//Controle par souris
+				camera.position.set(0, 0, 500);
+				controls.update();
+
+
+
+				scene = new THREE.Scene();
+				var texture = new THREE.TextureLoader().load( 'hardwood2_roughness.jpg' );
+
+
+/* ************************* La texture ************************* */
+				var material = new THREE.MeshBasicMaterial( { map: texture } );
+//				var material = new THREE.MeshBasicMaterial( {color: 0xffff00} );
+
+
+
+/* ************ Le plateau ************ */
+				var plateau = new THREE.BoxBufferGeometry(1000, 2, 500);
+
+				affplateau = new THREE.Mesh(plateau, material);
+				affplateau.position.set(0, -2, -150);
+
+				scene.add(affplateau);
+
+
+
+
+/********************* Partie Avant (portail) RDC **********************/
+
+				var murAvantDroit = new THREE.BoxBufferGeometry( 30, 100, 15);
+				affmurAvantDroit = new THREE.Mesh(murAvantDroit, material);
+				affmurAvantDroit.position.set(40, 50, 0);
+
+				var murAvantGauche = new THREE.BoxBufferGeometry( 30, 100, 15);
+				affmurAvantGauche = new THREE.Mesh(murAvantGauche, material);
+				affmurAvantGauche.position.set(-40, 50, 0);
+
+
+				var tourRDCAvantDroite = new THREE.CylinderGeometry( 20, 20 , 120, 32);
+				affTourRDCAvantDroite = new THREE.Mesh(tourRDCAvantDroite, material);
+				affTourRDCAvantDroite.position.set(70, 60, 0);
+
+				var tourRDCAvantGauche = new THREE.CylinderGeometry( 20, 20 , 120, 32);
+				affTourRDCAvantGauche = new THREE.Mesh(tourRDCAvantGauche, material);
+				affTourRDCAvantGauche.position.set(-70, 60, 0);
+
+				scene.add(affmurAvantDroit, affmurAvantGauche, affTourRDCAvantDroite, affTourRDCAvantGauche);
+
+/********************* Partie Avant(Sans portail) RDC **********************/
+
+
+				var murAvantDroitSP = new THREE.BoxBufferGeometry( 150, 100, 15);
+				affmurAvantDroitSP = new THREE.Mesh(murAvantDroitSP, material);
+				affmurAvantDroitSP.position.set(110, 50, 0);
+
+				var murAvantGaucheSP = new THREE.BoxBufferGeometry( 150, 100, 15);
+				affmurAvantGaucheSP = new THREE.Mesh(murAvantGaucheSP, material);
+				affmurAvantGaucheSP.position.set(-110, 50, 0);
+
+				scene.add(affmurAvantDroitSP, affmurAvantGaucheSP);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				renderer = new THREE.WebGLRenderer();
+				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				document.body.appendChild( renderer.domElement );
+				//
+				window.addEventListener( 'resize', onWindowResize, false );
+			}
+
+
+
+
+			function onWindowResize() {
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+				renderer.setSize( window.innerWidth, window.innerHeight );
+			}
+
+
+			function animate() {
+				requestAnimationFrame( animate );
+				controls.update();
+				renderer.render( scene, camera );
+			}
+
+
+		</script>
+
+	</body>
+</html>
