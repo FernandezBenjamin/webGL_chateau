@@ -32,7 +32,7 @@
 
 				camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 10000 );
 				controls = new THREE.OrbitControls( camera );//Controle par souris
-				camera.position.set(0, 400, 250);
+				camera.position.set(40, 550, 350);
 				controls.update();
 
 
@@ -113,6 +113,89 @@
 
 
 				scene.add(affmurAvantDroitSP, affmurAvantGaucheSP, affTourRDCAvantDroiteSP, affTourRDCAvantGaucheSP);
+
+
+/********************* Partie RDC droit *********************/
+
+				var murRDCDroitP1 = new THREE.BoxBufferGeometry( 180, 100, 15);
+				affmurRDCDroitP1 = new THREE.Mesh(murRDCDroitP1, material);
+				affmurRDCDroitP1.position.set(290, 50, -110);
+				affmurRDCDroitP1.rotation.y += 20;
+
+				var tourCarréeRDCDroit = new THREE.BoxBufferGeometry(80, 120, 80);
+				afftourCarréeRDCDroit = new THREE.Mesh(tourCarréeRDCDroit, material);
+				afftourCarréeRDCDroit.position.set(350, 60, -220);
+				afftourCarréeRDCDroit.rotation.y += 20;
+
+				var murRDCDroitP2 = new THREE.BoxBufferGeometry( 15, 100, 120);
+				affmurRDCDroitP2 = new THREE.Mesh(murRDCDroitP2, material);
+				affmurRDCDroitP2.position.set(350, 50, -322);
+
+				var tourRDCDroitCylindreP1 = new THREE.CylinderGeometry( 30, 30 , 120, 32);
+				affTourRDCDroitCylindreP1 = new THREE.Mesh(tourRDCDroitCylindreP1, material);
+				affTourRDCDroitCylindreP1.position.set(350, 60, -410);
+
+				var murRDCDroitP3 = new THREE.BoxBufferGeometry( 15, 100, 60);
+				affmurRDCDroitP3 = new THREE.Mesh(murRDCDroitP3, material);
+				affmurRDCDroitP3.position.set(350, 50, -460);
+
+				var murRDCDroitP4 = new THREE.BoxBufferGeometry( 15, 100, 100);
+				affmurRDCDroitP4 = new THREE.Mesh(murRDCDroitP4, material);
+				affmurRDCDroitP4.position.set(323, 50, -528);
+				affmurRDCDroitP4.rotation.y += 10;
+
+
+				scene.add(affmurRDCDroitP1, afftourCarréeRDCDroit, affmurRDCDroitP2, affTourRDCDroitCylindreP1, affmurRDCDroitP3, affmurRDCDroitP4);
+
+
+/********************* Partie RDC Gauche *********************/
+
+
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
