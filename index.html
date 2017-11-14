@@ -153,6 +153,32 @@
 
 /********************* Partie RDC Gauche *********************/
 
+								var murRDCGaucheP1 = new THREE.BoxBufferGeometry( 60, 100, 15);
+				affmurRDCGaucheP1 = new THREE.Mesh(murRDCGaucheP1, material);
+				affmurRDCGaucheP1.position.set(-290, 50, -90);
+				affmurRDCGaucheP1.rotation.y -= 10;
+
+				var murRDCGaucheP2 = new THREE.BoxBufferGeometry(15, 100, 120);
+				affmurRDCGaucheP2 = new THREE.Mesh(murRDCGaucheP2, material);
+				affmurRDCGaucheP2.position.set(-313, 50, -162);
+
+				var tourRDCGaucheCylindreP1 = new THREE.CylinderGeometry( 30, 30 , 120, 32);
+				affTourRDCGaucheCylindreP1 = new THREE.Mesh(tourRDCGaucheCylindreP1, material);
+				affTourRDCGaucheCylindreP1.position.set(-313, 60, -250);				
+
+				var murRDCGaucheP3 = new THREE.BoxBufferGeometry(15, 100, 120);
+				affmurRDCGaucheP3 = new THREE.Mesh(murRDCGaucheP3, material);
+				affmurRDCGaucheP3.position.set(-313, 50, -340);
+
+				var tourCarréeRDCDroit = new THREE.BoxBufferGeometry(80, 120, 80);
+				afftourCarréeRDCDroit = new THREE.Mesh(tourCarréeRDCDroit, material);
+				afftourCarréeRDCDroit.position.set(350, 60, -220);
+				afftourCarréeRDCDroit.rotation.y += 20;
+
+
+
+				scene.add(affmurRDCGaucheP1, affmurRDCGaucheP2, affTourRDCGaucheCylindreP1, affmurRDCGaucheP3);
+
 
 				
 
