@@ -32,7 +32,7 @@
 
 				camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 10000 );
 				controls = new THREE.OrbitControls( camera );//Controle par souris
-				camera.position.set(50, 400, 350);
+				camera.position.set(200, 600, 500);
 				controls.update();
 
 
@@ -84,27 +84,53 @@
 				affTourRDCAvantDroite = new THREE.Mesh(tourRDCAvantDroite, material);
 				affTourRDCAvantDroite.position.set(70, 65, 0);
 
+				var piedTourRDCAvantDroite = new THREE.ConeGeometry(35, 80, 35);
+				affPiedTourRDCAvantDroite = new THREE.Mesh(piedTourRDCAvantDroite, material);
+				affPiedTourRDCAvantDroite.position.set(70, 15, 0);
+
 				var toitTourRDCAvantDroit = new THREE.ConeGeometry( 30, 55, 30 );
 				affToitTourRDCAvantDroit = new THREE.Mesh(toitTourRDCAvantDroit, matBriquesBleues);
 				affToitTourRDCAvantDroit.position.set(70, 180, 0);
 
 				var tourRDCAvantDroitP2 = new THREE.CylinderGeometry( 30, 30 , 30, 32);
-				affTourRDCAvantDroitP2 = new THREE.Mesh(tourRDCAvantDroitP2, matBriquesBleues);
+				affTourRDCAvantDroitP2 = new THREE.Mesh(tourRDCAvantDroitP2, material);
 				affTourRDCAvantDroitP2.position.set(70, 125, 0);
 
 				var tourRDCAvantGauche = new THREE.CylinderGeometry( 20, 20 , 180, 32);
 				affTourRDCAvantGauche = new THREE.Mesh(tourRDCAvantGauche, material);
 				affTourRDCAvantGauche.position.set(-70, 65, 0);
 
+				var piedTourRDCAvantGauche = new THREE.ConeGeometry(35, 80, 35);
+				affPiedTourRDCAvantGauche = new THREE.Mesh(piedTourRDCAvantGauche, material);
+				affPiedTourRDCAvantGauche.position.set(-70, 15, 0);
+
 				var tourRDCAvantGaucheP2 = new THREE.CylinderGeometry( 30, 30 , 30, 32);
-				affTourRDCAvantGaucheP2 = new THREE.Mesh(tourRDCAvantGaucheP2, matBriquesBleues);
+				affTourRDCAvantGaucheP2 = new THREE.Mesh(tourRDCAvantGaucheP2, material);
 				affTourRDCAvantGaucheP2.position.set(-70, 125, 0);
 
 				var toitTourRDCAvantGauche = new THREE.ConeGeometry( 30, 55, 30 );
 				affToitTourRDCAvantGauche = new THREE.Mesh(toitTourRDCAvantGauche, matBriquesBleues);
 				affToitTourRDCAvantGauche.position.set(-70, 180, 0);
 
-				scene.add(affmurAvantDroit, affmurAvantGauche, affTourRDCAvantDroite, affTourRDCAvantDroitP2, affToitTourRDCAvantDroit, affTourRDCAvantGauche, affTourRDCAvantGaucheP2, affToitTourRDCAvantGauche, affmurAvantDroitP, affmurAvantGaucheP);
+
+				var curve = new THREE.EllipseCurve(
+					0,  0,            // ax, aY
+					10, 10,           // xRadius, yRadius
+					0, Math.PI,  // aStartAngle, aEndAngle
+					false,            // aClockwise //On s'en moque
+					0                 // aRotation
+				);
+
+
+
+
+var geometry25 = new THREE.TorusGeometry( 10, 3, 16, 100 );
+var material25 = new THREE.MeshBasicMaterial( { color: 0x000000 } );
+var torus = new THREE.Mesh( geometry25, material25 );
+scene.add( torus );
+
+
+				scene.add(affmurAvantDroit, affmurAvantGauche, affTourRDCAvantDroite, affPiedTourRDCAvantDroite, affTourRDCAvantDroitP2, affToitTourRDCAvantDroit, affTourRDCAvantGauche, affPiedTourRDCAvantGauche, affTourRDCAvantGaucheP2, affToitTourRDCAvantGauche, affmurAvantDroitP, affmurAvantGaucheP);
 
 /********************* Partie Avant(Sans portail) RDC **********************/
 
@@ -123,6 +149,10 @@
 				affTourRDCAvantDroiteSP = new THREE.Mesh(tourRDCAvantDroiteSP, material);
 				affTourRDCAvantDroiteSP.position.set(250, 65, -55);
 
+				var piedTourRDCAvantDroiteSP = new THREE.ConeGeometry(40, 80, 40);
+				affPiedTourRDCAvantDroiteSP = new THREE.Mesh(piedTourRDCAvantDroiteSP, material);
+				affPiedTourRDCAvantDroiteSP.position.set(250, 15, -55);
+
 				var toitTourRDCAvantDroitSP = new THREE.ConeGeometry( 40, 70, 40 );
 				affToitTourRDCAvantDroitSP = new THREE.Mesh(toitTourRDCAvantDroitSP, matBriquesBleues);
 				affToitTourRDCAvantDroitSP.position.set(250, 185, -55);
@@ -131,12 +161,16 @@
 				affTourRDCAvantGaucheSP = new THREE.Mesh(tourRDCAvantGaucheSP, material);
 				affTourRDCAvantGaucheSP.position.set(-250, 65, -55);
 
+				var piedTourRDCAvantGaucheSP = new THREE.ConeGeometry(35, 80, 35);
+				affPiedTourRDCAvantGaucheSP = new THREE.Mesh(piedTourRDCAvantGaucheSP, material);
+				affPiedTourRDCAvantGaucheSP.position.set(-250, 15, -55);
+
 				var toitTourRDCAvantGaucheSP = new THREE.ConeGeometry( 40, 70, 40);
 				affToitTourRDCAvantGaucheSP = new THREE.Mesh(toitTourRDCAvantGaucheSP, matBriquesBleues);
 				affToitTourRDCAvantGaucheSP.position.set(-250, 185, -55);
 
 
-				scene.add(affmurAvantDroitSP, affmurAvantGaucheSP, affTourRDCAvantDroiteSP, affToitTourRDCAvantDroitSP, affTourRDCAvantGaucheSP, affToitTourRDCAvantGaucheSP);
+				scene.add(affmurAvantDroitSP, affmurAvantGaucheSP, affTourRDCAvantDroiteSP, affPiedTourRDCAvantDroiteSP, affToitTourRDCAvantDroitSP, affTourRDCAvantGaucheSP, affPiedTourRDCAvantGaucheSP, affToitTourRDCAvantGaucheSP);
 
 
 /********************* Partie RDC droit *********************/
@@ -159,6 +193,10 @@
 				affTourRDCDroitCylindreP1 = new THREE.Mesh(tourRDCDroitCylindreP1, material);
 				affTourRDCDroitCylindreP1.position.set(350, 65, -410);
 
+				var piedTourRDCDroitCylindreP1 = new THREE.ConeGeometry(35, 80, 35);
+				affPiedTourRDCDroitCylindreP1 = new THREE.Mesh(piedTourRDCDroitCylindreP1, material);
+				affPiedTourRDCDroitCylindreP1.position.set(350, 15, -410);
+
 				var toitTourRDCDroitCylindriqueP1 = new THREE.ConeGeometry( 40, 70, 40 );
 				affToitTourRDCDroitCylindriqueP1 = new THREE.Mesh(toitTourRDCDroitCylindriqueP1, matBriquesBleues);
 				affToitTourRDCDroitCylindriqueP1.position.set(350, 185, -410);
@@ -173,7 +211,7 @@
 				affmurRDCDroitP4.rotation.y += 10;
 
 
-				scene.add(affmurRDCDroitP1, afftourCarréeRDCDroit, affmurRDCDroitP2, affTourRDCDroitCylindreP1, affToitTourRDCDroitCylindriqueP1, affmurRDCDroitP3, affmurRDCDroitP4);
+				scene.add(affmurRDCDroitP1, afftourCarréeRDCDroit, affmurRDCDroitP2, affTourRDCDroitCylindreP1, affPiedTourRDCDroitCylindreP1, affToitTourRDCDroitCylindriqueP1, affmurRDCDroitP3, affmurRDCDroitP4);
 
 
 /********************* Partie RDC Gauche *********************/
@@ -190,6 +228,10 @@
 				var tourRDCGaucheCylindreP1 = new THREE.CylinderGeometry( 30, 30 , 180, 32);
 				affTourRDCGaucheCylindreP1 = new THREE.Mesh(tourRDCGaucheCylindreP1, material);
 				affTourRDCGaucheCylindreP1.position.set(-313, 65, -250);
+
+				var piedTourRDCGaucheCylindreP1 = new THREE.ConeGeometry(35, 80, 35);
+				affPiedTourRDCGaucheCylindreP1 = new THREE.Mesh(piedTourRDCGaucheCylindreP1, material);
+				affPiedTourRDCGaucheCylindreP1.position.set(-313, 15, -250);
 
 				var toitTourRDCGaucheCylindriqueP1 = new THREE.ConeGeometry( 40, 70, 40 );
 				affToitTourRDCGaucheCylindriqueP1 = new THREE.Mesh(toitTourRDCGaucheCylindriqueP1, matBriquesBleues);
@@ -208,6 +250,10 @@
 				affTourRDCGaucheCylindreP2 = new THREE.Mesh(tourRDCGaucheCylindreP2, material);
 				affTourRDCGaucheCylindreP2.position.set(-313, 65, -400);
 
+				var piedTourRDCGaucheCylindreP2 = new THREE.ConeGeometry(35, 80, 35);
+				affPiedTourRDCGaucheCylindreP2 = new THREE.Mesh(piedTourRDCGaucheCylindreP2, material);
+				affPiedTourRDCGaucheCylindreP2.position.set(-313, 15, -400);
+
 				var toitTourRDCGaucheCylindriqueP2 = new THREE.ConeGeometry( 40, 70, 40 );
 				affToitTourRDCGaucheCylindriqueP2 = new THREE.Mesh(toitTourRDCGaucheCylindriqueP2, matBriquesBleues);
 				affToitTourRDCGaucheCylindriqueP2.position.set(-313, 185, -400);
@@ -222,7 +268,7 @@
 
 
 
-				scene.add(affmurRDCGaucheP1, affmurRDCGaucheP2, affTourRDCGaucheCylindreP1, affToitTourRDCGaucheCylindriqueP1, affmurRDCGaucheP3, affTourRDCGaucheCylindreP2, affToitTourRDCGaucheCylindriqueP2, affmurRDCGaucheP4, afftourCarréeRDCGauche);
+				scene.add(affmurRDCGaucheP1, affmurRDCGaucheP2, affTourRDCGaucheCylindreP1, affPiedTourRDCGaucheCylindreP1, affToitTourRDCGaucheCylindriqueP1, affmurRDCGaucheP3, affTourRDCGaucheCylindreP2, affPiedTourRDCGaucheCylindreP2, affToitTourRDCGaucheCylindriqueP2, affmurRDCGaucheP4, afftourCarréeRDCGauche);
 
 
 /********************* Partie RDC Arriere *********************/
@@ -241,6 +287,10 @@
 				affTourRDCArriereCylindreP1 = new THREE.Mesh(tourRDCArriereCylindreP1, material);
 				affTourRDCArriereCylindreP1.position.set(128, 65, -610);
 
+				var piedTourRDCArriereCylindreP1 = new THREE.ConeGeometry(35, 80, 35);
+				affPiedTourRDCArriereCylindreP1 = new THREE.Mesh(piedTourRDCArriereCylindreP1, material);
+				affPiedTourRDCArriereCylindreP1.position.set(128, 15, -610);
+
 				var toitTourRDCArriereCylindriqueP1 = new THREE.ConeGeometry( 40, 70, 40 );
 				affToitTourRDCArriereCylindriqueP1 = new THREE.Mesh(toitTourRDCArriereCylindriqueP1, matBriquesBleues);
 				affToitTourRDCArriereCylindriqueP1.position.set(128, 185, -610);
@@ -257,6 +307,10 @@
 				affTourRDCArriereCylindreP2 = new THREE.Mesh(tourRDCArriereCylindreP2, material);
 				affTourRDCArriereCylindreP2.position.set(-128, 65, -610);
 
+				var piedTourRDCArriereCylindreP2 = new THREE.ConeGeometry(35, 80, 35);
+				affPiedTourRDCArriereCylindreP2 = new THREE.Mesh(piedTourRDCArriereCylindreP2, material);
+				affPiedTourRDCArriereCylindreP2.position.set(-128, 15, -610);
+
 				var toitTourRDCArriereCylindriqueP2 = new THREE.ConeGeometry( 40, 70, 40 );
 				affToitTourRDCArriereCylindriqueP2 = new THREE.Mesh(toitTourRDCArriereCylindriqueP2, matBriquesBleues);
 				affToitTourRDCArriereCylindriqueP2.position.set(-128, 185, -610);
@@ -268,7 +322,7 @@
 
 
 
-				scene.add(affmurRDCArriereP1, afftourCarréeRDCArriere, affTourRDCArriereCylindreP1, affToitTourRDCArriereCylindriqueP1, affmurRDCArriereP2, affmurRDCArriereP3, affTourRDCArriereCylindreP2, affToitTourRDCArriereCylindriqueP2, affmurRDCArriereP4);
+				scene.add(affmurRDCArriereP1, afftourCarréeRDCArriere, affTourRDCArriereCylindreP1, affPiedTourRDCArriereCylindreP1, affToitTourRDCArriereCylindriqueP1, affmurRDCArriereP2, affmurRDCArriereP3, affTourRDCArriereCylindreP2, affPiedTourRDCArriereCylindreP2, affToitTourRDCArriereCylindriqueP2, affmurRDCArriereP4);
 
 
 
@@ -291,9 +345,9 @@
 				affpartieAvant1erEtageHautGauche = new THREE.Mesh(partieAvant1erEtageHautGauche, material);
 				affpartieAvant1erEtageHautGauche.position.set(-80, 216, -150);
 
-	            var pyramidgeometry = new THREE.CylinderGeometry(30, 135, 70, 4, false);
+	            var pyramidgeometry = new THREE.CylinderGeometry(20, 135, 160, 4, false);
 	            pyramid = new THREE.Mesh(pyramidgeometry, matBriquesBleues);
-	            pyramid.position.set(0, 282, -160);
+	            pyramid.position.set(0, 327, -160);
 	            pyramid.rotation.y += 2.35;
 
 				var tourAvant1erEtageDroit = new THREE.CylinderGeometry( 15, 15, 60, 32);
@@ -321,13 +375,13 @@
 	            pyramid2.position.set(150, 190, -250);
 	            pyramid2.rotation.y += 2.35;
 
-				var tourPyramidGeometry2 = new THREE.CylinderGeometry( 12, 12, 80, 32);
+				var tourPyramidGeometry2 = new THREE.CylinderGeometry( 12, 12, 140, 32);
 				affTourPyramidGeometry2 = new THREE.Mesh(tourPyramidGeometry2, material);
-				affTourPyramidGeometry2.position.set(160, 230, -230);
+				affTourPyramidGeometry2.position.set(160, 250, -230);
 
 				var toitTourPyramidGeometry2 = new THREE.ConeGeometry( 15, 30, 15);
 				affToitTourPyramidGeometry2 = new THREE.Mesh(toitTourPyramidGeometry2, matBriquesBleues);
-				affToitTourPyramidGeometry2.position.set(160, 280, -230);
+				affToitTourPyramidGeometry2.position.set(160, 330, -230);
 
 				var partieBase1erEtagePart2 = new THREE.BoxBufferGeometry(200, 50, 200);
 				affPartieBase1erEtagePart2 = new THREE.Mesh(partieBase1erEtagePart2, material);
@@ -338,57 +392,110 @@
 	            pyramid3.position.set(-150, 240, -250);
 	            pyramid3.rotation.y += 2.35;
 
+				var partieBase1erEtageArriere = new THREE.BoxBufferGeometry(400, 160, 150);
+				affPartieBase1erEtageArriere = new THREE.Mesh(partieBase1erEtageArriere, material);
+				affPartieBase1erEtageArriere.position.set(0, 55, -425);
 
+	            var pyramidgeometry4 = new THREE.CylinderGeometry(50, 110, 60, 4, false);
+	            pyramid4 = new THREE.Mesh(pyramidgeometry4, matBriquesBleues);
+	            pyramid4.position.set(130, 165, -425);
+	            pyramid4.rotation.y += 2.35;
 
-				scene.add(affPartieAvant1erEtageBase, affpartieAvant1erEtageHaut, affpartieAvant1erEtageHautDroit, affpartieAvant1erEtageHautGauche, pyramid, affTourAvant1erEtageDroit, affToitTourAvant1erEtageDroit, affTourAvant1erEtageGauche, affToitTourAvant1erEtageGauche, affPartieBase1erEtage, pyramid2, affTourPyramidGeometry2, affToitTourPyramidGeometry2, affPartieBase1erEtagePart2, pyramid3);
+	            var pyramidgeometry5 = new THREE.CylinderGeometry(50, 110, 60, 4, false);
+	            pyramid5 = new THREE.Mesh(pyramidgeometry5, matBriquesBleues);
+	            pyramid5.position.set(-130, 165, -425);
+	            pyramid5.rotation.y += 2.35;
 
+				var partieBase1erEtageArriereV2 = new THREE.BoxBufferGeometry(150, 160, 60 );
+				affPartieBase1erEtageArriereV2 = new THREE.Mesh(partieBase1erEtageArriereV2, material);
+				affPartieBase1erEtageArriereV2.position.set(0, 55, -520);
 
+	            var pyramidgeometry6 = new THREE.CylinderGeometry(50, 110, 60, 4, false);
+	            pyramid6 = new THREE.Mesh(pyramidgeometry6, matBriquesBleues);
+	            pyramid6.position.set(0 , 165, -475);
+	            pyramid6.rotation.y += 2.35;
 
+				var tourGaucheGrosse = new THREE.BoxBufferGeometry(70, 450, 70);
+				affTourGaucheGrosse = new THREE.Mesh(tourGaucheGrosse, material);
+				affTourGaucheGrosse.position.set(-240, 200, -160);
 
+				var tourGaucheGrossePart2 = new THREE.BoxBufferGeometry(80, 60, 80);
+				affTourGaucheGrossePart2 = new THREE.Mesh(tourGaucheGrossePart2, material);
+				affTourGaucheGrossePart2.position.set(-240, 400, -160);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	            var pyramidgeometryTour = new THREE.CylinderGeometry(0, 60, 80, 4, false);
+	            pyramidTour = new THREE.Mesh(pyramidgeometryTour, matBriquesBleues);
+	            pyramidTour.position.set(-240 , 470, -160);
+	            pyramidTour.rotation.y += 2.35;
 
 
 
+				scene.add(affPartieAvant1erEtageBase, affpartieAvant1erEtageHaut, affpartieAvant1erEtageHautDroit, affpartieAvant1erEtageHautGauche, pyramid, affTourAvant1erEtageDroit, affToitTourAvant1erEtageDroit, affTourAvant1erEtageGauche, affToitTourAvant1erEtageGauche, affPartieBase1erEtage, pyramid2, affTourPyramidGeometry2, affToitTourPyramidGeometry2, affPartieBase1erEtagePart2, pyramid3, affPartieBase1erEtageArriere, affPartieBase1erEtageArriereV2, pyramid4, pyramid5, pyramid6, affTourGaucheGrosse, affTourGaucheGrossePart2, pyramidTour);
 
 
 
+/********************* Partie 2emeEtage *********************/
+
+
+				var partieBase2emeEtage = new THREE.BoxBufferGeometry(200, 140, 200);
+				affPartieBase2emeEtage = new THREE.Mesh(partieBase2emeEtage, material);
+				affPartieBase2emeEtage.position.set(0, 200, -300);
+
+	            var pyramid2emeEtage = new THREE.CylinderGeometry(110, 150, 70, 4, false);
+	            affpyramid2emeEtage = new THREE.Mesh(pyramid2emeEtage, matBriquesBleues);
+	            affpyramid2emeEtage.position.set(0 , 300, -300);
+	            affpyramid2emeEtage.rotation.y += 2.35;
+
+				scene.add(affPartieBase2emeEtage, affpyramid2emeEtage);
 
 
 
+/********************* Partie 2emeEtage *********************/
 
 
+				var tour2emeEtage = new THREE.CylinderGeometry( 35, 35, 240, 32);
+				affTour2emeEtage = new THREE.Mesh(tour2emeEtage, material);
+				affTour2emeEtage.position.set(40, 430, -280);
+
+				var tour2emeEtagePart1 = new THREE.CylinderGeometry( 45, 45, 25, 32);
+				affTour2emeEtagePart1 = new THREE.Mesh(tour2emeEtagePart1, material);
+				affTour2emeEtagePart1.position.set(40, 510, -280);
+
+				var tour2emeEtagePart1V2 = new THREE.CylinderGeometry( 45, 0, 50, 32);
+				affTour2emeEtagePart1V2 = new THREE.Mesh(tour2emeEtagePart1V2, material);
+				affTour2emeEtagePart1V2.position.set(40, 473, -280);
+
+				var tour2emeEtagePart2 = new THREE.CylinderGeometry( 45, 45, 25, 32);
+				affTour2emeEtagePart2 = new THREE.Mesh(tour2emeEtagePart2, material);
+				affTour2emeEtagePart2.position.set(40, 450, -280);
+
+				var tour2emeEtagePart2V2 = new THREE.CylinderGeometry( 45, 0, 50, 32);
+				affTour2emeEtagePart2V2 = new THREE.Mesh(tour2emeEtagePart2V2, material);
+				affTour2emeEtagePart2V2.position.set(40, 413, -280);
+
+				var toitTour2emeEtage = new THREE.ConeGeometry( 45, 100, 45);
+				affToitTour2emeEtage = new THREE.Mesh(toitTour2emeEtage, matBriquesBleues);
+				affToitTour2emeEtage.position.set(40, 600, -280);
 
 
+				var tour2emeEtage2 = new THREE.CylinderGeometry( 25, 25, 350, 32);
+				affTour2emeEtage2 = new THREE.Mesh(tour2emeEtage2, material);
+				affTour2emeEtage2.position.set(-120, 300, -350);
+
+				var tour2emeEtage2V2 = new THREE.CylinderGeometry( 35, 35, 30, 32);
+				affTour2emeEtage2V2 = new THREE.Mesh(tour2emeEtage2V2, material);
+				affTour2emeEtage2V2.position.set(-120, 430, -350);
+
+				var tour2emeEtage2VPart2 = new THREE.CylinderGeometry( 35, 0, 50, 32);
+				affTour2emeEtage2VPart2 = new THREE.Mesh(tour2emeEtage2VPart2, material);
+				affTour2emeEtage2VPart2.position.set(-120, 390, -350);
+
+				var toitTour2emeEtage2 = new THREE.ConeGeometry( 5, 50, 5);
+				affToitTour2emeEtage2 = new THREE.Mesh(toitTour2emeEtage, matBriquesBleues);
+				affToitTour2emeEtage2.position.set(-120, 510, -350);
+
+
+				scene.add(affTour2emeEtage, affTour2emeEtagePart1, affTour2emeEtagePart1V2, affTour2emeEtagePart2, affTour2emeEtagePart2V2, affToitTour2emeEtage, affTour2emeEtage2, affTour2emeEtage2V2, affTour2emeEtage2VPart2, affToitTour2emeEtage2);
 
 
 
